@@ -6,7 +6,7 @@ import httpx
 
 api_router = APIRouter(prefix="/api")
 
-BASE_URL = "http://221.180.141.96:11434/api"
+BASE_URL = "http://127.0.0.1:11434/api"
 
 
 @api_router.post("/generate")
