@@ -9,7 +9,10 @@ const refreshIntervalInput = document.getElementById('refreshInterval');
 let refreshInterval = 10000; // 默认10秒
 let refreshTimer = null;
 
-// 初始化事件
+/**
+ * 初始化事件
+ * @returns {Promise<void>}
+ */
 async function initializeEvent() {
     await loadModels(); // 加载模型列表
 
@@ -33,7 +36,10 @@ async function initializeEvent() {
     startAutoRefresh();
 }
 
-// 加载模型列表
+/**
+ * 加载模型列表
+ * @returns {Promise<void>}
+ */
 async function loadModels() {
     try {
         let tagsData = await ajax.get('/api/tags'); // 获取服务标签
@@ -46,13 +52,16 @@ async function loadModels() {
         tagsData.models.forEach(model => {
             let isRunning = runningModels.has(model.name); // 判断当前模型是否在运行中
             let statusLabel = isRunning ? '<span class="success label">运行中</span>' : '<span class="alert label">已停止</span>';
+            let optionLabel = isRunning ? `<button class="warning button stop-btn" onclick="stopModel('${model.name}')">停止</button>` : `<button class="success button start-btn" onclick="startModel('${model.name}')">启动</button>`;
+
             let newRow = `
                 <tr>
                     <td>${model.name}</td>
                     <td>${statusLabel}</td>
                     <td>
                         <button class="button view-btn" onclick="showModel('${model.name}')">查看</button>
-                        <button class="alert button delete-btn">删除</button>
+<!--                        <button class="alert button delete-btn">删除</button>-->
+                        ${optionLabel}
                     </td>
                 </tr>
             `;
@@ -63,7 +72,9 @@ async function loadModels() {
     }
 }
 
-// 启动自动刷新
+/**
+ * 启动自动刷新
+ */
 function startAutoRefresh() {
     clearInterval(refreshTimer); // 清除当前定时器
     refreshTimer = setInterval(() => {
@@ -71,12 +82,38 @@ function startAutoRefresh() {
     }, refreshInterval);
 }
 
-// 查看模型详细
+/**
+ * 查看模型详细
+ * @param modelName
+ */
 function showModel(modelName) {
     localStorage.setItem('modelName', modelName); // 存储模型名称
     window.open(`/frontend/detail/detail.html`, '_blank');
 }
 
+/**
+ * 启动模型
+ * @param modelName
+ */
+function startModel(modelName) {
+    ajax.post('/api/generate', {
+        "model": modelName,
+        "keep_alive": -1,
+        "stream": true,
+        "options": {"num_ctx": 4096}
+    });
+}
+
+/**
+ * 停止模型
+ * @param modelName
+ */
+function stopModel(modelName) {
+    ajax.post('/api/generate', {
+        "model": modelName,
+        "keep_alive": 0
+    });
+}
 
 // 页面加载完成时初始化事件
 document.addEventListener('DOMContentLoaded', initializeEvent);
