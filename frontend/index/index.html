@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ollama 服务管理面板</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/foundation.min.js"></script>
+    <script src="../ajax.js" defer></script>
+    <script src="index.js" defer></script>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+    </style>
+</head>
+
+<body>
+<div class="grid-container flex-container">
+    <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+            <h4>Ollama 服务管理面板</h4>
+            <div class="callout">
+                <h5>已添加的服务</h5>
+                <p>以下是当前已添加的 Ollama 服务，您可以在此管理和查看服务状态。</p>
+                <h5>设置自动刷新间隔</h5>
+                <select id="refreshInterval" class="button" style="display: inline-block; width: auto;">
+                    <option value="1000">1秒</option>
+                    <option value="3000">3秒</option>
+                    <option value="5000">5秒</option>
+                    <option value="10000" selected>10秒</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+            <table class="hover">
+                <thead>
+                <tr>
+                    <th>服务名称</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="tableBody"><!-- 服务列表信息 --></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+            <div class="callout">
+                <h5>添加新服务</h5>
+                <form>
+                    <div class="grid-x grid-padding-x">
+                        <div class="large-8 medium-8 cell">
+                            <label>服务名称</label>
+                            <input type="text" placeholder="输入服务名称" required/>
+                        </div>
+                        <div class="large-4 medium-4 cell">
+                            <label>&nbsp;</label>
+                            <input type="submit" class="button" value="添加服务"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

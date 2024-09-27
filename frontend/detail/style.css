@@ -1,0 +1,37 @@
+.accordion-title {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.accordion-content {
+    display: flex;
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: #fff;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.item {
+    display: flex;
+}
+
+.item > label {
+    font-weight: bold;
+    margin-right: 20px;
+}
