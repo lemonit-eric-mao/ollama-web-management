@@ -10,8 +10,17 @@ pip install -r requirements.txt
 ```
 
 ## 运行
+
 ``` bash
 cd backend
 
 python main.py
 ```
+
+### 管理页面
+
+![](docs/manage.png)
+
+### AI 聊天页面
+
+![](docs/chat.png)
