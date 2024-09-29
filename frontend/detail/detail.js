@@ -58,43 +58,43 @@ function displayModelDetails(param) {
     let modelDetails = `
         <ul class="accordion" data-accordion>
             <li>
-                <a href="#" class="accordion-title">模型文件 (Modelfile)</a>
+                <a href="javascript:;" class="accordion-title">模型文件 (Modelfile)</a>
                 <div class="accordion-content" data-tab-content="modelfile">
                     <pre>${data.modelfile.replace(/\n/g, '<br>')}</pre>
                 </div>
             </li>
             <li>
-                <a href="#" class="accordion-title">参数 (Parameters)</a>
+                <a href="javascript:;" class="accordion-title">参数 (Parameters)</a>
                 <div class="accordion-content" data-tab-content="parameters">
                     <pre>${data.parameters.replace(/\n/g, '<br>')}</pre>
                 </div>
             </li>
             <li>
-                <a href="#" class="accordion-title">模板 (Template)</a>
+                <a href="javascript:;" class="accordion-title">模板 (Template)</a>
                 <div class="accordion-content" data-tab-content="template">
                     <pre>${data.template.replace(/\n/g, '<br>')}</pre>
                 </div>
             </li>
             <li>
-                <a href="#" class="accordion-title">系统 (System)</a>
+                <a href="javascript:;" class="accordion-title">系统 (System)</a>
                 <div class="accordion-content" data-tab-content="system">
                     <pre>${JSON.stringify(data.system, null, 4)}</pre>
                 </div>
             </li>
             <li>
-                <a href="#" class="accordion-title">细节 (Details)</a>
+                <a href="javascript:;" class="accordion-title">细节 (Details)</a>
                 <div class="accordion-content" data-tab-content="details">
                     <pre>${JSON.stringify(data.details, null, 4)}</pre>
                 </div>
             </li>
             <li>
-                <a href="#" class="accordion-title">模型信息 (Model Info)</a>
+                <a href="javascript:;" class="accordion-title">模型信息 (Model Info)</a>
                 <div class="accordion-content" data-tab-content="model_info">
                     <pre>${JSON.stringify(data.details, null, 4)}</pre>
                 </div>
             </li>
             <li>
-                <a href="#" class="accordion-title">修改时间 (Modified At)</a>
+                <a href="javascript:;" class="accordion-title">修改时间 (Modified At)</a>
                 <div class="accordion-content" data-tab-content="modified_at">
                     <pre>${new Date(data.modified_at).toLocaleString()}</pre>
                 </div>

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ollama 服务管理面板</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css">
+    <!-- foundation.min.js 依赖jquery.min.js -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/foundation.min.js"></script>
     <script src="../ajax.js" defer></script>
     <script src="index.js" defer></script>
@@ -32,7 +34,10 @@
                     <option value="5000">5秒</option>
                     <option value="10000" selected>10秒</option>
                 </select>
+                <br/>
+                <a href="/frontend/chat/chat.html" class="button jump-button">测试语言模型</a>
             </div>
+
         </div>
     </div>
 
@@ -51,25 +56,25 @@
         </div>
     </div>
 
-    <div class="grid-x grid-padding-x">
-        <div class="large-12 cell">
-            <div class="callout">
-                <h5>添加新服务</h5>
-                <form>
-                    <div class="grid-x grid-padding-x">
-                        <div class="large-8 medium-8 cell">
-                            <label>服务名称</label>
-                            <input type="text" placeholder="输入服务名称" required/>
-                        </div>
-                        <div class="large-4 medium-4 cell">
-                            <label>&nbsp;</label>
-                            <input type="submit" class="button" value="添加服务"/>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    <!--    <div class="grid-x grid-padding-x">-->
+    <!--        <div class="large-12 cell">-->
+    <!--            <div class="callout">-->
+    <!--                <h5>添加新服务</h5>-->
+    <!--                <form>-->
+    <!--                    <div class="grid-x grid-padding-x">-->
+    <!--                        <div class="large-8 medium-8 cell">-->
+    <!--                            <label>服务名称</label>-->
+    <!--                            <input type="text" placeholder="输入服务名称" required/>-->
+    <!--                        </div>-->
+    <!--                        <div class="large-4 medium-4 cell">-->
+    <!--                            <label>&nbsp;</label>-->
+    <!--                            <input type="submit" class="button" value="添加服务"/>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </form>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
 </div>
 

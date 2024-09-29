@@ -48,6 +48,8 @@ async function loadModels() {
         // 创建运行中模型的集合
         let runningModels = new Set(psData.models.map(model => model.name));
 
+        localStorage.setItem('modelList', JSON.stringify([...runningModels]));// 存储模型名称
+
         tableBody.innerHTML = ''; // 清空表格
         tagsData.models.forEach(model => {
             let isRunning = runningModels.has(model.name); // 判断当前模型是否在运行中
@@ -68,7 +70,7 @@ async function loadModels() {
             tableBody.insertAdjacentHTML('beforeend', newRow); // 添加新行
         });
     } catch (error) {
-        console.error('Failed to load services:', error);
+        console.log('加载模型服务列表失败:', error);
     }
 }
 

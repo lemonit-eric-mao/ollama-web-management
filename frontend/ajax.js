@@ -1,8 +1,6 @@
 class ajax {
-    /**
-     * 基础URL
-     */
-    static baseURL = 'http://localhost:11345';
+    // 基础URL
+    static baseURL = '';
 
     /**
      * 发起请求
@@ -12,20 +10,21 @@ class ajax {
      */
     static async request(url, options) {
         let response = await fetch(`${ajax.baseURL}${url}`, options);
-        return response.json();
+        return response; // 返回原始响应
     }
 
     /**
-     *
+     * GET 请求
      * @param url
      * @returns {Promise<*>}
      */
     static async get(url) {
-        return ajax.request(url, {});
+        let response = await ajax.request(url, {});
+        return response.json();
     }
 
     /**
-     *
+     * POST 请求
      * @param url
      * @param data
      * @returns {Promise<*>}
@@ -38,11 +37,12 @@ class ajax {
             },
             body: JSON.stringify(data),
         };
-        return ajax.request(url, options);
+        let response = await ajax.request(url, options);
+        return response.json();
     }
 
     /**
-     *
+     * PUT 请求
      * @param url
      * @param data
      * @returns {Promise<*>}
@@ -55,11 +55,12 @@ class ajax {
             },
             body: JSON.stringify(data),
         };
-        return ajax.request(url, options);
+        let response = await ajax.request(url, options);
+        return response.json();
     }
 
     /**
-     *
+     * DELETE 请求
      * @param url
      * @returns {Promise<*>}
      */
@@ -67,6 +68,27 @@ class ajax {
         let options = {
             method: 'DELETE',
         };
-        return ajax.request(url, options);
+        let response = await ajax.request(url, options);
+        return response.json();
     }
+
+    /**
+     * 流式 POST 请求
+     * @param url
+     * @param data
+     * @returns {Promise<*>}
+     */
+    static async postStream(url, data) {
+        let options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        };
+        let response = await ajax.request(url, options);
+        return response.body; // 返回流，交给业务代码处理
+    }
+
+
 }
