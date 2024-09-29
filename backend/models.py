@@ -15,11 +15,6 @@ class Message(BaseModel):
     content: str
 
 
-class ChatRequest(BaseModel):
-    model: str
-    messages: List[Message]
-
-
 class ModelRequest(BaseModel):
     model: str
     stream: Optional[bool] = False

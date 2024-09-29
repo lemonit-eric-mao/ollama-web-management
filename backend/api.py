@@ -8,39 +8,38 @@ from fastapi.params import Body
 from sse_starlette import EventSourceResponse
 
 from backend.chat import ChatServer
+from backend.config.server import OLLAMA_URL
 
 api_router = APIRouter(prefix="/api")
 
-BASE_URL = "http://221.180.141.96:11434"
 chat_model = ChatServer()
 
 
 @api_router.post("/generate")
 async def generate_model(payload: dict = Body(..., description="模型名称")):
     async with httpx.AsyncClient() as client:
-        print(f"{BASE_URL}/api/generate", payload)
-        response = await client.post(f"{BASE_URL}/api/generate", json=payload)
+        response = await client.post(f"{OLLAMA_URL}/api/generate", json=payload)
         return response.json()
 
 
 @api_router.post("/show")
 async def show_model(payload: dict = Body(..., description="模型名称")):
     async with httpx.AsyncClient() as client:
-        response = await client.post(f"{BASE_URL}/api/show", json=payload)
+        response = await client.post(f"{OLLAMA_URL}/api/show", json=payload)
         return response.json()
 
 
 @api_router.get("/ps")
 async def list_running_models():
     async with httpx.AsyncClient() as client:
-        response = await client.get(f"{BASE_URL}/api/ps")
+        response = await client.get(f"{OLLAMA_URL}/api/ps")
         return response.json()
 
 
 @api_router.get("/tags")
 async def get_tags():
     async with httpx.AsyncClient() as client:
-        response = await client.get(f"{BASE_URL}/api/tags")
+        response = await client.get(f"{OLLAMA_URL}/api/tags")
         return response.json()
 
 
@@ -81,14 +80,14 @@ async def chat(question: str = Body(..., description="用户输入", examples=["
 async def delete_model(name: str):
     payload = {"name": name}
     async with httpx.AsyncClient() as client:
-        response = await client.delete(f"{BASE_URL}/api/delete", json=payload)
+        response = await client.delete(f"{OLLAMA_URL}/api/delete", json=payload)
         return response.json()
 
 
 @api_router.post("/pull")
 async def pull_model(payload: dict = Body(..., description="模型名称")):
     async with httpx.AsyncClient() as client:
-        response = await client.post(f"{BASE_URL}/api/pull", json=payload)
+        response = await client.post(f"{OLLAMA_URL}/api/pull", json=payload)
         return response.json()
 
 
@@ -96,5 +95,5 @@ async def pull_model(payload: dict = Body(..., description="模型名称")):
 async def generate_embedding(payload: dict = Body(..., description="模型名称")):
     # payload = {"model": model, "input": input}
     async with httpx.AsyncClient() as client:
-        response = await client.post(f"{BASE_URL}/api/embed", json=payload)
+        response = await client.post(f"{OLLAMA_URL}/api/embed", json=payload)
         return response.json()
