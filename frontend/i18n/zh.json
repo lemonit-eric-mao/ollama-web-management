@@ -1,0 +1,41 @@
+{
+    "index": {
+        "title": "Ollama 服务管理面板",
+        "addedServices": "已添加的服务",
+        "description": "以下是当前已添加的 Ollama 服务，您可以在此管理和查看服务状态。",
+        "refreshInterval": "设置自动刷新间隔",
+        "testModel": "测试语言模型",
+        "addService": "添加新服务",
+        "serviceName": "服务名称",
+        "status": "状态",
+        "action": "操作",
+        "interval1": "1秒",
+        "interval3": "3秒",
+        "interval5": "5秒",
+        "interval10": "10秒",
+        "inputPlaceholder": "输入服务名称",
+        "submit": "添加服务",
+        "language": "语言",
+        "stopped": "已停止",
+        "running": "运行中",
+        "view": "查看",
+        "start": "启动",
+        "stop": "停止"
+    },
+    "chat": {
+        "chatTitle": "AI 聊天对话",
+        "chatPlaceholder": "请输入您的消息",
+        "send": "发送",
+        "modelSelectLabel": "选择模型"
+    },
+    "detail": {
+        "modelDetail": "模型详情",
+        "modelFile": "模型文件",
+        "parameters": "参数",
+        "template": "模板",
+        "system": "系统",
+        "details": "细节",
+        "modelInfo": "模型信息",
+        "modifiedAt": "修改时间"
+    }
+}

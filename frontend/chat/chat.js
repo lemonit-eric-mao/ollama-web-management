@@ -82,3 +82,6 @@ chatInput.addEventListener('keydown', (event) => {
         }
     }
 });
+
+// 当前页面国际化语言
+initI18n(localStorage.getItem('language'));

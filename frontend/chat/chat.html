@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 聊天对话</title>
+    <title data-i18n="chat.chatTitle">AI 聊天对话</title>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css">-->
     <link rel="stylesheet" href="../static/foundation.min.css">
-    <script src="../static/ajax.js" defer></script>
     <link rel="stylesheet" href="chat.css">
+
+    <script src="../static/ajax.js" defer></script>
+    <script src="../static/jquery-3.6.0.min.js" defer></script>
+    <script src="../static/i18next.min.js" defer></script>
+    <script src="../static/i18nextHttpBackend.min.js" defer></script>
+    <script src="../i18n/i18n.js" defer></script>
 </head>
 <body>
 
@@ -15,17 +20,17 @@
     <div class="grid-x grid-margin-x">
         <div class="cell small-12">
             <div id="title">
-                <h4>AI 聊天对话</h4>
+                <h4 data-i18n="chat.chatTitle">AI 聊天对话</h4>
             </div>
             <div id="chatContainer">
                 <!-- 聊天内容将在这里动态插入 -->
             </div>
             <div class="grid-x grid-margin-x align-middle">
                 <div class="cell small-9">
-                    <input type="text" id="chatInput" class="form-control" placeholder="请输入您的消息">
+                    <input type="text" id="chatInput" class="form-control" placeholder="请输入您的消息" data-i18n-attr="placeholder:chat.chatTitle">
                 </div>
                 <div class="cell small-1">
-                    <button id="sendButton" class="button primary" disabled>发送</button>
+                    <button id="sendButton" class="button primary" disabled data-i18n="chat.send">发送</button>
                 </div>
                 <div class="cell small-2">
                     <select id="modelSelect" class="form-control">
@@ -37,7 +42,7 @@
     </div>
 </div>
 
-<script src="chat.js"></script>
+<script src="chat.js" defer></script>
 
 </body>
 </html>

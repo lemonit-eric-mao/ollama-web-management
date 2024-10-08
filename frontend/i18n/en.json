@@ -1,0 +1,41 @@
+{
+    "index": {
+        "title": "Ollama Service Management Panel",
+        "addedServices": "Added Services",
+        "description": "Below are the currently added Ollama services, where you can manage and check the service status.",
+        "refreshInterval": "Set Auto Refresh Interval",
+        "testModel": "Test Language Model",
+        "addService": "Add New Service",
+        "serviceName": "Service Name",
+        "status": "Status",
+        "action": "Action",
+        "interval1": "1 second",
+        "interval3": "3 seconds",
+        "interval5": "5 seconds",
+        "interval10": "10 seconds",
+        "inputPlaceholder": "Enter service name",
+        "submit": "Add Service",
+        "language": "Language",
+        "stopped": "Stopped",
+        "running": "Running",
+        "view": "View",
+        "start": "Start",
+        "stop": "Stop"
+    },
+    "chat": {
+        "chatTitle": "AI Chat Dialog",
+        "chatPlaceholder": "Please enter your message",
+        "send": "Send",
+        "modelSelectLabel": "Select Model"
+    },
+    "detail": {
+        "modelDetail": "Model Details",
+        "modelFile": "ModelFile",
+        "parameters": "Parameters",
+        "template": "Template",
+        "system": "System",
+        "details": "Details",
+        "modelInfo": "Model Info",
+        "modifiedAt": "Modified At"
+    }
+}

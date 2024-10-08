@@ -4,8 +4,8 @@
  * @author 毛巳煜
  */
 
-const tableBody = document.getElementById('tableBody');
-const refreshIntervalInput = document.getElementById('refreshInterval');
+let tableBody = document.getElementById('tableBody');
+let refreshIntervalInput = document.getElementById('refreshInterval');
 let refreshInterval = 10000; // 默认10秒
 let refreshTimer = null;
 
@@ -16,21 +16,24 @@ let refreshTimer = null;
 async function initializeEvent() {
     await loadModels(); // 加载模型列表
 
+    // 加载 i18next 和 i18next-fetch-backend 插件
+    initI18n()
+
     // 处理操作事件
-    tableBody.addEventListener('click', (event) => {
+    tableBody.click = (event) => {
         if (event.target.classList.contains('delete-btn')) {
             let row = event.target.closest('tr'); // 找到对应的行
             if (row) {
                 row.remove(); // 删除行
             }
         }
-    });
+    };
 
     // 处理刷新间隔变化事件
-    refreshIntervalInput.addEventListener('change', (event) => {
+    refreshIntervalInput.onchange = (event) => {
         refreshInterval = parseInt(event.target.value, 10); // 更新刷新间隔
         startAutoRefresh(); // 重新启动定时器
-    });
+    };
 
     // 启动自动刷新
     startAutoRefresh();
@@ -53,21 +56,24 @@ async function loadModels() {
         tableBody.innerHTML = ''; // 清空表格
         tagsData.models.forEach(model => {
             let isRunning = runningModels.has(model.name); // 判断当前模型是否在运行中
-            let statusLabel = isRunning ? '<span class="success label">运行中</span>' : '<span class="alert label">已停止</span>';
-            let optionLabel = isRunning ? `<button class="warning button stop-btn" onclick="stopModel('${model.name}')">停止</button>` : `<button class="success button start-btn" onclick="startModel('${model.name}')">启动</button>`;
+            let statusLabel = isRunning ? '<span class="success label" data-i18n="index.running">运行中</span>' : '<span class="alert label" data-i18n="index.stopped">已停止</span>';
+            let optionLabel = isRunning ? `<button class="warning button stop-btn" onclick="stopModel('${model.name}')" data-i18n="index.stop">停止</button>` : `<button class="success button start-btn" onclick="startModel('${model.name}')" data-i18n="index.start">启动</button>`;
 
             let newRow = `
                 <tr>
                     <td>${model.name}</td>
                     <td>${statusLabel}</td>
                     <td>
-                        <button class="button view-btn" onclick="showModel('${model.name}')">查看</button>
+                        <button class="button view-btn" onclick="showModel('${model.name}')" data-i18n="index.view">查看</button>
 <!--                        <button class="alert button delete-btn">删除</button>-->
                         ${optionLabel}
                     </td>
                 </tr>
             `;
             tableBody.insertAdjacentHTML('beforeend', newRow); // 添加新行
+
+            // 页面刷新时，更新国际化内容
+            updateContent();
         });
     } catch (error) {
         console.log('加载模型服务列表失败:', error);
