@@ -1,0 +1,54 @@
+#chatContainer {
+    height: 80vh; /* 中间区域占 80% 高度 */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.user-message {
+    display: flex;
+    text-align: right;
+    margin-bottom: 50px;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.user-message-textarea {
+    max-width: 60%; /* 最大宽度 60% */
+    overflow-wrap: break-word; /* 超出时换行 */
+    border: 0;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 10px;
+    background-color: #f1f1f1;
+}
+
+.ai-message {
+    display: flex;
+    text-align: left;
+    margin-bottom: 50px;
+    flex-direction: column;
+}
+
+.ai-message-textarea {
+    max-width: 100%; /* 最大宽度 100% */
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+    overflow-wrap: break-word; /* 超出时换行 */
+    margin-top: 10px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#sendButton:disabled {
+    background-color: #ccc;
+}
