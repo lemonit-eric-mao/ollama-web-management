@@ -41,6 +41,7 @@
         "view": "View",
         "refresh": "Refresh Model List",
         "modelName": "Model Name",
-        "action": "操作"
+        "action": "Action",
+        "pull": "Pull a Model"
     }
 }

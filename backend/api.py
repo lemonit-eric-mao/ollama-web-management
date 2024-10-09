@@ -7,6 +7,7 @@ import httpx
 from fastapi import APIRouter
 from fastapi.params import Body
 from sse_starlette import EventSourceResponse
+from starlette.responses import StreamingResponse
 
 from backend.chat import ChatServer
 from backend.config.server import OLLAMA_URL
@@ -93,14 +94,17 @@ async def delete_model(payload: dict = Body(..., description="模型名称")):
 
 @api_router.post("/pull")
 async def pull_model(payload: dict = Body(..., description="模型名称")):
-    async with httpx.AsyncClient() as client:
-        response = await client.post(f"{OLLAMA_URL}/api/pull", json=payload)
-        return response.json()
+    async def stream_response():
+        async with httpx.AsyncClient(timeout=None) as client:  # 设置永不超时
+            async with client.stream("POST", f"{OLLAMA_URL}/api/pull", json=payload) as response:
+                async for chunk in response.aiter_bytes():
+                    yield chunk
+
+    return StreamingResponse(stream_response(), media_type="application/json")
 
 
 @api_router.post("/embed")
 async def generate_embedding(payload: dict = Body(..., description="模型名称")):
-    # payload = {"model": model, "input": input}
     async with httpx.AsyncClient() as client:
         response = await client.post(f"{OLLAMA_URL}/api/embed", json=payload)
         return response.json()

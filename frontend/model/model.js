@@ -61,7 +61,6 @@ function showModel(modelName) {
     window.open(`/frontend/detail/detail.html`, '_blank');
 }
 
-
 /**
  * 删除模型
  * @param modelName
@@ -73,6 +72,97 @@ async function deleteModel(modelName) {
         await loadModels()
     } catch (error) {
         console.log(`删除模型【${modelName}】失败:`, error);
+    }
+}
+
+/**
+ * 拉取模型
+ */
+async function pullModel() {
+    let modelNameInput = document.getElementById('modelName');
+    let responseContainerPre = document.getElementById('responseContainer');
+
+    let modelName = modelNameInput.value;
+
+    try {
+        let response = await ajax.postStream('/api/pull', {
+            "name": modelName,
+            "stream": true,
+        });
+
+        // 处理流
+        let reader = response.getReader();
+        let decoder = new TextDecoder('utf-8');
+        let readStream = async () => {
+            while (true) {
+                // 读取流数据
+                let {done, value} = await reader.read();
+                if (done) break;
+
+                // 解码并处理每一行
+                let text = decoder.decode(value, {stream: true});
+
+                // 解析每一行的 JSON 数据
+                let lines = text.split('\n');
+                for (let line of lines) {
+                    if (line.trim() !== '') {
+                        let jsonData = JSON.parse(line);
+                        // 更新进度条
+                        updateProgress(responseContainerPre, jsonData);
+                    }
+                }
+            }
+        };
+        await readStream(); // 等待流读取完成
+
+        // 重新渲染列表
+        await loadModels()
+    } catch (error) {
+        console.log(`拉取模型【${modelName}】失败:`, error);
+        responseContainerPre.innerHTML += `<span style="color: red;">拉取模型失败: ${error.message}</span><br>`;
+    }
+}
+
+/**
+ * 更新进度条显示
+ */
+function updateProgress(responseContainer, data) {
+
+    if (data.status) {
+        let statusMessages = {
+            'pulling manifest': '📄 正在拉取清单...',
+            'success': '✅ 模型拉取成功！',
+            'verifying sha256 digest': '🔑 验证中...',
+            'writing manifest': '✍️ 正在写入清单...',
+            'removing any unused layers': '🧹 正在移除未使用的层...'
+        };
+
+        switch (data.status) {
+            case 'pulling manifest':
+            case 'success':
+            case 'verifying sha256 digest':
+            case 'writing manifest':
+            case 'removing any unused layers':
+                responseContainer.innerHTML = `<div class="callout"><div>${statusMessages[data.status]}</div></div>`;
+                break;
+            default:
+                if (data.status.startsWith('pulling')) {
+                    let progress = Math.round((data.completed / data.total) * 100);
+                    responseContainer.innerHTML = `
+                        <div class="callout">
+                            <strong>下载中: ${data.digest}</strong>
+                            <div class="progress" role="progressbar" tabindex="0" aria-valuenow="${progress}" aria-valuemin="0" aria-valuetext="${progress}%" aria-valuemax="100">
+                                <span class="progress-meter" style="width: ${progress}%">
+                                    <p class="progress-meter-text">${progress}%</p>
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                }
+        }
+
+        // 自动滚动到最新信息
+        responseContainer.scrollTop = responseContainer.scrollHeight;
     }
 }
 

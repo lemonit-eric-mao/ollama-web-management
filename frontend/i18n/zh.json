@@ -41,6 +41,7 @@
         "view": "查看",
         "refresh": "刷新模型列表",
         "modelName": "模型名称",
-        "action": "操作"
+        "action": "操作",
+        "pull": "拉取模型"
     }
 }
