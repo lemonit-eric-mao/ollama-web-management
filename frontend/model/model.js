@@ -118,8 +118,7 @@ async function pullModel() {
         // 重新渲染列表
         await loadModels()
     } catch (error) {
-        console.log(`拉取模型【${modelName}】失败:`, error);
-        responseContainerPre.innerHTML += `<span style="color: red;">拉取模型失败: ${error.message}</span><br>`;
+        responseContainerPre.innerHTML = `<div class="callout"><span  style="color: red;">拉取模型失败: ${error.message}</span></div>`;
     }
 }
 
@@ -143,7 +142,7 @@ function updateProgress(responseContainer, data) {
             case 'verifying sha256 digest':
             case 'writing manifest':
             case 'removing any unused layers':
-                responseContainer.innerHTML = `<div class="callout"><div>${statusMessages[data.status]}</div></div>`;
+                responseContainer.innerHTML = `<div class="callout"><span>${statusMessages[data.status]}</span></div>`;
                 break;
             default:
                 if (data.status.startsWith('pulling')) {

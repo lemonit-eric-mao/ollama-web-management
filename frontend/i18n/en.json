@@ -6,6 +6,7 @@
         "addNewModel": "Add New Model",
         "refreshInterval": "Set Auto Refresh Interval",
         "testModel": "Test Language Model",
+        "modelName": "Model Name",
         "status": "Status",
         "action": "Action",
         "interval1": "1 second",

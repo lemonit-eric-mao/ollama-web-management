@@ -6,6 +6,7 @@
         "addNewModel": "添加新模型",
         "refreshInterval": "设置自动刷新间隔",
         "testModel": "测试语言模型",
+        "modelName": "模型名称",
         "status": "状态",
         "action": "操作",
         "interval1": "1秒",
