@@ -78,11 +78,11 @@ async def chat(question: str = Body(..., description="用户输入", examples=["
 
 
 @api_router.delete("/delete")
-async def delete_model(params: dict = Body(..., description="模型名称")):
+async def delete_model(payload: dict = Body(..., description="模型名称")):
     async with httpx.AsyncClient() as client:
         try:
             # 使用 request 方法发送 DELETE 请求
-            response = await client.request("DELETE", f"{OLLAMA_URL}/api/delete", headers={'Content-Type': 'application/json'}, json=params)
+            response = await client.request("DELETE", f"{OLLAMA_URL}/api/delete", headers={'Content-Type': 'application/json'}, json=payload)
             response.raise_for_status()
             return True
         except Exception as e:
