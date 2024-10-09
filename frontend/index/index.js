@@ -1,6 +1,6 @@
 /**
- * @file api.js
- * @brief API接口定义
+ * @file index.js
+ * @brief 首页
  * @author 毛巳煜
  */
 
@@ -17,17 +17,7 @@ async function initializeEvent() {
     await loadModels(); // 加载模型列表
 
     // 加载 i18next 和 i18next-fetch-backend 插件
-    initI18n()
-
-    // 处理操作事件
-    tableBody.click = (event) => {
-        if (event.target.classList.contains('delete-btn')) {
-            let row = event.target.closest('tr'); // 找到对应的行
-            if (row) {
-                row.remove(); // 删除行
-            }
-        }
-    };
+    initI18n('zh')
 
     // 处理刷新间隔变化事件
     refreshIntervalInput.onchange = (event) => {
@@ -65,7 +55,6 @@ async function loadModels() {
                     <td>${statusLabel}</td>
                     <td>
                         <button class="button view-btn" onclick="showModel('${model.name}')" data-i18n="index.view">查看</button>
-<!--                        <button class="alert button delete-btn">删除</button>-->
                         ${optionLabel}
                     </td>
                 </tr>

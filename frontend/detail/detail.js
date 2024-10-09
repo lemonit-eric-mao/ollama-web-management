@@ -1,4 +1,4 @@
-async function fetchModelDetails() {
+async function initializeEvent() {
     let modelName = localStorage.getItem('modelName'); // 从localStorage获取模型名称
 
     try {
@@ -109,6 +109,6 @@ function displayModelDetails(param) {
 
 }
 
-// 页面加载时获取模型详情
-fetchModelDetails();
+// 页面加载完成时初始化事件
+document.addEventListener('DOMContentLoaded', initializeEvent);
 

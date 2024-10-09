@@ -3,18 +3,15 @@
         "title": "Ollama Service Management Panel",
         "addedServices": "Added Services",
         "description": "Below are the currently added Ollama services, where you can manage and check the service status.",
+        "addNewModel": "Add New Model",
         "refreshInterval": "Set Auto Refresh Interval",
         "testModel": "Test Language Model",
-        "addService": "Add New Service",
-        "serviceName": "Service Name",
         "status": "Status",
         "action": "Action",
         "interval1": "1 second",
         "interval3": "3 seconds",
         "interval5": "5 seconds",
         "interval10": "10 seconds",
-        "inputPlaceholder": "Enter service name",
-        "submit": "Add Service",
         "language": "Language",
         "stopped": "Stopped",
         "running": "Running",
@@ -37,5 +34,13 @@
         "details": "Details",
         "modelInfo": "Model Info",
         "modifiedAt": "Modified At"
+    },
+    "model": {
+        "title": "Add New Model",
+        "delete": "Delete",
+        "view": "View",
+        "refresh": "Refresh Model List",
+        "modelName": "Model Name",
+        "action": "操作"
     }
 }

@@ -4,7 +4,7 @@
 function initI18n(language) {
 
     // 默认语言
-    let defaultLanguage = language || 'en';
+    let defaultLanguage = language || 'zh';
     // 将默认语言保存到本地
     localStorage.setItem('language', defaultLanguage);
 

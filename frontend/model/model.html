@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加新模型</title>
+    <link rel="stylesheet" href="../static/foundation.min.css">
+    <link rel="stylesheet" href="model.css">
+
+    <script src="../static/ajax.js" defer></script>
+    <script src="../static/i18next.min.js" defer></script>
+    <script src="../static/i18nextHttpBackend.min.js" defer></script>
+    <script src="../i18n/i18n.js" defer></script>
+    <script src="model.js" defer></script>
+</head>
+
+<body>
+<div class="grid-container flex-container">
+    <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+            <h4 data-i18n="model.title">添加新模型</h4>
+            <div class="callout">
+                <!-- 测试语言模型按钮 -->
+                <div class="grid-x grid-padding-x" style="margin-top: 10px;">
+                    <div class="cell small-6">
+                        <button class="button view-btn" onclick="loadModels()" data-i18n="model.refresh">刷新模型列表</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+            <table class="hover">
+                <thead>
+                <tr>
+                    <th data-i18n="model.modelName">模型名称</th>
+                    <th data-i18n="model.action">操作</th>
+                </tr>
+                </thead>
+                <tbody id="tableBody"><!-- 模型列表信息 --></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
