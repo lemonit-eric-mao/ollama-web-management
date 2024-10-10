@@ -1,5 +1,7 @@
 # A Simple Web Management Page
 
+[中文](README.md) | [English](README_en.md)
+
 ## Installation
 
 ```bash

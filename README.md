@@ -1,5 +1,7 @@
 # 一个简易的Web管理页面
 
+[中文](README.md) | [English](README_en.md)
+
 ## 安装
 
 ``` bash
