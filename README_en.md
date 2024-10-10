@@ -28,8 +28,12 @@ python main.py
 
 ### Management Page
 
-![](docs/manage.png)
+![](docs/en/manage.png)
 
 ### AI Chat Page
 
-![](docs/chat.png)
+![](docs/en/chat.png)
+
+### Add New Model
+
+![](docs/en/add_new_model.png)

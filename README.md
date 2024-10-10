@@ -29,8 +29,12 @@ python main.py
 
 ### 管理页面
 
-![](docs/manage.png)
+![](docs/zh/manage.png)
 
 ### AI 聊天页面
 
-![](docs/chat.png)
+![](docs/zh/chat.png)
+
+### 添加新模型
+
+![](docs/zh/add_new_model.png)
