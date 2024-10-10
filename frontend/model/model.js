@@ -145,11 +145,24 @@ function updateProgress(responseContainer, data) {
                 responseContainer.innerHTML = `<div class="callout"><span>${statusMessages[data.status]}</span></div>`;
                 break;
             default:
-                if (data.status.startsWith('pulling')) {
-                    let progress = Math.round((data.completed / data.total) * 100);
+                if (data.status.startsWith('pulling') && data.completed) {// 更新进度条
+                    // 单位映射
+                    let units = {
+                        GB: 1000 ** 3,
+                        MB: 1000 ** 2,
+                    };
+
+                    // 确定使用的单位
+                    let unit = data.total >= units.GB ? 'GB' : 'MB';
+                    let divisor = units[unit];
+
+                    let completedSize = (data.completed / divisor).toFixed(2);
+                    let totalSize = (data.total / divisor).toFixed(2);
+                    let progress = ((data.completed / data.total) * 100).toFixed(2);
+
                     responseContainer.innerHTML = `
                         <div class="callout">
-                            <strong>下载中: ${data.digest}</strong>
+                            <strong>Downloading: </strong><span>${data.digest}</span><strong> [${completedSize}${unit}/${totalSize}${unit}]</strong>
                             <div class="progress" role="progressbar" tabindex="0" aria-valuenow="${progress}" aria-valuemin="0" aria-valuetext="${progress}%" aria-valuemax="100">
                                 <span class="progress-meter" style="width: ${progress}%">
                                     <p class="progress-meter-text">${progress}%</p>
