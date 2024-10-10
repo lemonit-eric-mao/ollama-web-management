@@ -7,7 +7,11 @@
         "refreshInterval": "设置自动刷新间隔",
         "testModel": "测试语言模型",
         "modelName": "模型名称",
+        "modelSize": "模型文件大小",
+        "modelParameterSize": "模型参数大小",
+        "modelQuantizationLevel": "模型量化级别",
         "status": "状态",
+        "processor": "处理器",
         "action": "操作",
         "interval1": "1秒",
         "interval3": "3秒",
@@ -42,6 +46,9 @@
         "view": "查看",
         "refresh": "刷新模型列表",
         "modelName": "模型名称",
+        "modelSize": "模型文件大小",
+        "modelParameterSize": "模型参数大小",
+        "modelQuantizationLevel": "模型量化级别",
         "action": "操作",
         "pull": "拉取模型"
     }

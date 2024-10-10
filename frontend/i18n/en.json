@@ -7,7 +7,11 @@
         "refreshInterval": "Set Auto Refresh Interval",
         "testModel": "Test Language Model",
         "modelName": "Model Name",
+        "modelSize": "Model Size",
+        "modelParameterSize": "Model Parameter Size",
+        "modelQuantizationLevel": "Model Quantization Level",
         "status": "Status",
+        "processor": "Processor",
         "action": "Action",
         "interval1": "1 second",
         "interval3": "3 seconds",
@@ -42,6 +46,9 @@
         "view": "View",
         "refresh": "Refresh Model List",
         "modelName": "Model Name",
+        "modelSize": "Model Size",
+        "modelParameterSize": "Model Parameter Size",
+        "modelQuantizationLevel": "Model Quantization Level",
         "action": "Action",
         "pull": "Pull a Model"
     }

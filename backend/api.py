@@ -20,8 +20,13 @@ chat_model = ChatServer()
 @api_router.post("/generate")
 async def generate_model(payload: dict = Body(..., description="模型名称")):
     async with httpx.AsyncClient() as client:
-        response = await client.post(f"{OLLAMA_URL}/api/generate", json=payload)
-        return response.json()
+        try:
+            response = await client.post(f"{OLLAMA_URL}/api/generate", json=payload)
+            return response.json()
+        except Exception as e:
+            # 捕获其他类型的异常
+            print(f"An error occurred: {str(e)}")
+            raise HTTPException()
 
 
 @api_router.post("/show")

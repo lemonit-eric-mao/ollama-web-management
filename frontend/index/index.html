@@ -6,6 +6,7 @@
     <title>Ollama 服务管理面板</title>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css">-->
     <link rel="stylesheet" href="../static/foundation.min.css">
+    <link rel="stylesheet" href="../static/common.css">
     <link rel="stylesheet" href="index.css">
 
     <!-- foundation.min.js 依赖jquery.min.js -->
@@ -77,7 +78,11 @@
                 <thead>
                 <tr>
                     <th data-i18n="index.modelName">模型名称</th>
+                    <th data-i18n="index.modelSize">模型文件大小</th>
+                    <th data-i18n="index.modelParameterSize">模型参数大小</th>
+                    <th data-i18n="index.modelQuantizationLevel">模型量化级别</th>
                     <th data-i18n="index.status">状态</th>
+                    <!-- <th data-i18n="index.processor">处理器</th>-->
                     <th data-i18n="index.action">操作</th>
                 </tr>
                 </thead>

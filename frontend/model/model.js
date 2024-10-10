@@ -32,12 +32,25 @@ async function loadModels() {
 
         tableBody.innerHTML = ''; // 清空表格
         tagsData.models.forEach(model => {
+
+            // 单位映射
+            let units = {
+                GB: 1000 ** 3,
+                MB: 1000 ** 2,
+            };
+            // 确定使用的单位
+            let unit = model.size >= units.GB ? 'GB' : 'MB';
+            let divisor = units[unit];
+            let modelSize = (model.size / divisor).toFixed(1);
             let newRow = `
                 <tr>
                     <td>${model.name}</td>
+                    <td>${modelSize}${unit}</td>
+                    <td>${model.details.parameter_size}</td>
+                    <td>${model.details.quantization_level}</td>
                     <td>
-                        <button class="button view-btn" onclick="showModel('${model.name}')" data-i18n="model.view">查看</button>
-                        <button class="warning button delete-btn" onclick="deleteModel('${model.name}')" data-i18n="model.delete">删除</button>
+                        <button class="button view-btn margin-0" onclick="showModel('${model.name}')" data-i18n="model.view">查看</button>
+                        <button class="warning button delete-btn margin-0" onclick="deleteModel('${model.name}')" data-i18n="model.delete">删除</button>
                     </td>
                 </tr>
             `;

@@ -47,14 +47,27 @@ async function loadModels() {
         tagsData.models.forEach(model => {
             let isRunning = runningModels.has(model.name); // 判断当前模型是否在运行中
             let statusLabel = isRunning ? '<span class="success label" data-i18n="index.running">运行中</span>' : '<span class="alert label" data-i18n="index.stopped">已停止</span>';
-            let optionLabel = isRunning ? `<button class="warning button stop-btn" onclick="stopModel('${model.name}')" data-i18n="index.stop">停止</button>` : `<button class="success button start-btn" onclick="startModel('${model.name}')" data-i18n="index.start">启动</button>`;
+            let optionLabel = isRunning ? `<button class="warning button stop-btn margin-0" onclick="stopModel('${model.name}')" data-i18n="index.stop">停止</button>` : `<button class="success button start-btn margin-0" onclick="startModel('${model.name}')" data-i18n="index.start">启动</button>`;
 
+            // 单位映射
+            let units = {
+                GB: 1000 ** 3,
+                MB: 1000 ** 2,
+            };
+            // 确定使用的单位
+            let unit = model.size >= units.GB ? 'GB' : 'MB';
+            let divisor = units[unit];
+            let modelSize = (model.size / divisor).toFixed(1);
             let newRow = `
                 <tr>
                     <td>${model.name}</td>
+                    <td>${modelSize}${unit}</td>
+                    <td>${model.details.parameter_size}</td>
+                    <td>${model.details.quantization_level}</td>
                     <td>${statusLabel}</td>
+<!--                    <td>${model.processor}</td>-->
                     <td>
-                        <button class="button view-btn" onclick="showModel('${model.name}')" data-i18n="index.view">查看</button>
+                        <button class="button view-btn margin-0" onclick="showModel('${model.name}')" data-i18n="index.view">查看</button>
                         ${optionLabel}
                     </td>
                 </tr>
