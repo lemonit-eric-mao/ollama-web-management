@@ -8,15 +8,9 @@ class ChatServer(object):
 
     # 拼接提示词
     def join_prompt(self, question, history, system_prompt: str = None):
-        messages = history
-        # 1. 拼接system 提示词
+        messages = history + [{"role": "user", "content": question}]
         if system_prompt:
             messages.insert(0, {"role": "system", "content": system_prompt})
-
-        # 2. 拼接当前问题
-        messages.append({"role": "user", "content": question})
-
-        # 3. 返回整体对话信息
         return messages
 
     # 聊天函数
