@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>添加新模型</title>
+    <title>管理模型</title>
     <link rel="stylesheet" href="../static/foundation.min.css">
     <link rel="stylesheet" href="../static/common.css">
     <link rel="stylesheet" href="model.css">
@@ -13,21 +13,48 @@
     <script src="../static/i18nextHttpBackend.min.js" defer></script>
     <script src="../i18n/i18n.js" defer></script>
     <script src="model.js" defer></script>
+    <style>
+        /* 弹窗样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            width: 50%;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
 <div class="grid-container flex-container">
     <div class="grid-x grid-padding-x">
         <div class="large-12 cell">
-            <h4 data-i18n="model.title">添加新模型</h4>
+            <h4 data-i18n="model.title">管理模型</h4>
             <div class="callout">
                 <!-- 测试语言模型按钮 -->
                 <div class="grid-x grid-padding-x">
-                    <div class="cell small-2">
+                    <div class="cell small-6">
                         <input type="text" id="modelName" placeholder="模型名称" data-i18n-attr="placeholder:model.modelName"/>
                     </div>
                     <div class="cell small-2">
                         <button class="button view-btn" onclick="pullModel()" data-i18n="model.pull">拉取模型</button>
+                    </div>
+                    <div class="cell small-2">
+                        <button class="button view-btn" onclick="showLoadModelDialog()" data-i18n="model.loadLocalModel">加载本地模型</button>
                     </div>
                 </div>
             </div>
@@ -56,7 +83,40 @@
         </div>
     </div>
 
+    <!-- 加载模型弹窗 -->
+    <div id="loadModelDialog" class="modal">
+        <div class="modal-content">
+
+            <form onsubmit="loadLocalModel(event);">
+                <h5>Model File</h5>
+
+                <div class="grid-x grid-margin-x">
+                    <div class="cell small-6">
+                        <input type="text" id="dialogModelName" class="input-group-field" placeholder="模型名称" data-i18n-attr="placeholder:model.modelName" required/>
+                    </div>
+                </div>
+
+                <div class="grid-x grid-margin-x">
+                    <div class="cell small-12">
+                        <textarea id="dialogModelFileContent" class="textarea" rows="10" placeholder="输入模型文件内容" style="margin-top: 1rem;"></textarea>
+                    </div>
+                </div>
+
+                <div class="grid-x grid-margin-x">
+                    <div class="cell small-6">
+                        <button class="button primary" type="submit" data-i18n="model.submit">提交</button>
+                    </div>
+                    <div class="cell small-6">
+                        <button class="button alert" onclick="closeLoadModelDialog()" data-i18n="model.cancel">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 </div>
+
 
 </body>
 </html>

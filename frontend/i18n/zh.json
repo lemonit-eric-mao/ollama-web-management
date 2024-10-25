@@ -3,7 +3,7 @@
         "title": "Ollama 服务管理面板",
         "addedServices": "已添加的服务",
         "description": "以下是当前已添加的 Ollama 服务，您可以在此管理和查看服务状态。",
-        "addNewModel": "添加新模型",
+        "manageModel": "管理模型",
         "refreshInterval": "设置自动刷新间隔",
         "testModel": "测试语言模型",
         "modelName": "模型名称",
@@ -41,7 +41,7 @@
         "modifiedAt": "修改时间"
     },
     "model": {
-        "title": "添加新模型",
+        "title": "管理模型",
         "delete": "删除",
         "view": "查看",
         "refresh": "刷新模型列表",
@@ -50,6 +50,9 @@
         "modelParameterSize": "模型参数大小",
         "modelQuantizationLevel": "模型量化级别",
         "action": "操作",
-        "pull": "拉取模型"
+        "pull": "拉取模型",
+        "loadLocalModel": "加载本地模型",
+        "submit": "提交",
+        "cancel": "取消"
     }
 }

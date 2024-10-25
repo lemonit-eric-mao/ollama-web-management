@@ -40,3 +40,7 @@ python main.py
 ### 添加新模型
 
 ![](docs/zh/add_new_model.png)
+
+### 从本地添加模型
+
+![](docs/zh/loadLocalModel.png)

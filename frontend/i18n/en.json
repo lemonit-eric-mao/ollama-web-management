@@ -3,7 +3,7 @@
         "title": "Ollama Service Management Panel",
         "addedServices": "Added Services",
         "description": "Below are the currently added Ollama services, where you can manage and check the service status.",
-        "addNewModel": "Add New Model",
+        "manageModel": "Manage Model",
         "refreshInterval": "Set Auto Refresh Interval",
         "testModel": "Test Language Model",
         "modelName": "Model Name",
@@ -41,7 +41,7 @@
         "modifiedAt": "Modified At"
     },
     "model": {
-        "title": "Add New Model",
+        "title": "Manage Model",
         "delete": "Delete",
         "view": "View",
         "refresh": "Refresh Model List",
@@ -50,6 +50,9 @@
         "modelParameterSize": "Model Parameter Size",
         "modelQuantizationLevel": "Model Quantization Level",
         "action": "Action",
-        "pull": "Pull a Model"
+        "pull": "Pull a Model",
+        "loadLocalModel": "Load Local Model",
+        "submit": "Submit",
+        "cancel": "Cancel"
     }
 }

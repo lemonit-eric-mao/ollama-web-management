@@ -39,3 +39,7 @@ python main.py
 ### Add New Model
 
 ![](docs/en/add_new_model.png)
+
+### Load Local Model
+
+![](docs/zh/loadLocalModel.png)
