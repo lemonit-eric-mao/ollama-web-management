@@ -30,7 +30,7 @@ async function sendMessage() {
         sendButton.disabled = true; // 发送后禁用按钮
 
         let response = await ajax.postStream('/api/chat/completions', {
-            "question": message, "history": [], "stream": true, "model": modelSelect.value, "temperature": 0.5
+            "question": message, "history": [], "stream": true, "model": modelSelect.value, "temperature": 0.01
         });
 
         // 处理流
@@ -39,7 +39,7 @@ async function sendMessage() {
         let readStream = async () => {
             let message = `
                     <img class="avatar" src="ai-avatar.png" alt="AI头像">
-                    <span class="ai-message-textarea"></span>
+                    <pre class="ai-message-textarea"></pre>
                 `
 
             // 必须要创建一个DOM元素，才能在下面使用appendChild()追加
