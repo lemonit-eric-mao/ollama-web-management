@@ -22,7 +22,9 @@
         "running": "Running",
         "view": "View",
         "start": "Start",
-        "stop": "Stop"
+        "stop": "Stop",
+        "serverAddress": "Ollama Server Address",
+        "updateServerAddress": "Update Server Address"
     },
     "chat": {
         "chatTitle": "AI Chat Dialog",

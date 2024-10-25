@@ -125,5 +125,17 @@ function stopModel(modelName) {
     });
 }
 
+/**
+ * 配置服务端地址
+ */
+async function configServerAddress() {
+
+    let serverAddress = document.getElementById('serverAddress').value;
+
+    await ajax.post('/api/updateServerAddress', {
+        "server_address": serverAddress,
+    });
+}
+
 // 页面加载完成时初始化事件
 document.addEventListener('DOMContentLoaded', initializeEvent);

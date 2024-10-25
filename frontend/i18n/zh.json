@@ -22,7 +22,9 @@
         "running": "运行中",
         "view": "查看",
         "start": "启动",
-        "stop": "停止"
+        "stop": "停止",
+        "serverAddress": "Ollama 服务端地址",
+        "updateServerAddress": "更新服务端地址"
     },
     "chat": {
         "chatTitle": "AI 聊天对话",

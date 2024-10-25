@@ -35,6 +35,19 @@
                 <!-- 语言切换器 -->
                 <div class="grid-x grid-padding-x">
                     <div class="cell small-3">
+                        <label for="languageSwitcher" class="text-right middle" data-i18n="index.serverAddress">服务端地址:</label>
+                    </div>
+                    <div class="cell small-6">
+                        <input id="serverAddress" class="form-control" type="text" placeholder="http://127.0.0.1:11434" value=""/>
+                    </div>
+                    <div class="cell small-3">
+                        <button id="updateServerAddress" class="button" onclick="configServerAddress()" data-i18n="index.updateServerAddress">更新服务端地址</button>
+                    </div>
+                </div>
+
+                <!-- 语言切换器 -->
+                <div class="grid-x grid-padding-x">
+                    <div class="cell small-3">
                         <label for="languageSwitcher" class="text-right middle" data-i18n="index.language">语言:</label>
                     </div>
                     <div class="cell small-6">
