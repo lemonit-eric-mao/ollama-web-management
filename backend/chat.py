@@ -1,11 +1,12 @@
 from openai import OpenAI
-from backend.config.server import OLLAMA_URL
+
+from backend.api import DEFAULT_OLLAMA_URL
 
 
 class ChatServer(object):
 
     def __init__(self):
-        self.client = OpenAI(base_url=f"{OLLAMA_URL}/v1/", api_key="empty")
+        self.client = OpenAI(base_url=f"{DEFAULT_OLLAMA_URL}/v1/", api_key="empty")
 
     # 拼接提示词
     def join_prompt(self, question, history, system_prompt: str = None):
