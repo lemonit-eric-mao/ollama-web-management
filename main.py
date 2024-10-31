@@ -1,13 +1,15 @@
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import RedirectResponse
 
-from api import api_router  # 导入 API 路由
+from backend.api import api_router
 from backend.config.server import HOST_URL, HOST_PORT
 
 app = FastAPI()
-app.mount("/frontend", StaticFiles(directory="../frontend"), name="frontend")
+app.mount("/frontend", StaticFiles(directory="./frontend"), name="frontend")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 

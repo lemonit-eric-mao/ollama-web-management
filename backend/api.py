@@ -14,10 +14,9 @@ from backend.config.server import OLLAMA_URL
 
 api_router = APIRouter(prefix="/api")
 
-chat_model = ChatServer()
-
 DEFAULT_OLLAMA_URL = OLLAMA_URL
 
+chat_model = ChatServer()
 
 @api_router.post("/generate")
 async def generate_model(payload: dict = Body(..., description="模型名称")):

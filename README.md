@@ -4,11 +4,8 @@
 
 ## 安装
 
-``` bash
-cd backend
-
+```bash
 pip install -r requirements.txt
-
 ```
 
 ## 配置
@@ -24,8 +21,6 @@ pip install -r requirements.txt
 ## 运行
 
 ``` bash
-cd backend
-
 python main.py
 ```
 
