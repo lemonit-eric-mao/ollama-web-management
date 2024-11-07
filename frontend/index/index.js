@@ -135,6 +135,8 @@ async function configServerAddress() {
     await ajax.post('/api/updateServerAddress', {
         "server_address": serverAddress,
     });
+
+    await loadModels();
 }
 
 // 页面加载完成时初始化事件
