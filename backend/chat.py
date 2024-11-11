@@ -17,6 +17,7 @@ class ChatServer(object):
 
     # 聊天函数
     def chat(self, question, history, **kwargs):
+        self.client = OpenAI(base_url=f"{get_ollama_url()}/v1/", api_key="empty")
         # 1. 拼接对话记录
         messages = self.join_prompt(question, history)
 

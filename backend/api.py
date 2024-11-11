@@ -19,7 +19,7 @@ chat_model = ChatServer()
 
 @api_router.post("/generate")
 async def generate_model(payload: dict = Body(..., description="模型名称")):
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=3000) as client:
         try:
             response = await client.post(f"{get_ollama_url()}/api/generate", json=payload)
             return response.json()
@@ -31,21 +31,21 @@ async def generate_model(payload: dict = Body(..., description="模型名称")):
 
 @api_router.post("/show")
 async def show_model(payload: dict = Body(..., description="模型名称")):
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=None) as client:
         response = await client.post(f"{get_ollama_url()}/api/show", json=payload)
         return response.json()
 
 
 @api_router.get("/ps")
 async def list_running_models():
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=None) as client:
         response = await client.get(f"{get_ollama_url()}/api/ps")
         return response.json()
 
 
 @api_router.get("/tags")
 async def get_tags():
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=None) as client:
         response = await client.get(f"{get_ollama_url()}/api/tags")
         return response.json()
 
@@ -85,7 +85,7 @@ async def chat(question: str = Body(..., description="用户输入", examples=["
 
 @api_router.delete("/delete")
 async def delete_model(payload: dict = Body(..., description="模型名称")):
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=None) as client:
         try:
             # 使用 request 方法发送 DELETE 请求
             response = await client.request("DELETE", f"{get_ollama_url()}/api/delete", headers={'Content-Type': 'application/json'}, json=payload)
@@ -110,7 +110,7 @@ async def pull_model(payload: dict = Body(..., description="模型名称")):
 
 @api_router.post("/embed")
 async def generate_embedding(payload: dict = Body(..., description="模型名称")):
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=None) as client:
         response = await client.post(f"{get_ollama_url()}/api/embed", json=payload)
         return response.json()
 
