@@ -61,7 +61,6 @@ async function sendMessage() {
                 let text = decoder.decode(value, {stream: true});
                 text.split('\n').forEach(line => {
                     if (line.trim() && line.startsWith('data:')) { // 只处理非空行
-                        console.log(line)
                         let jsonObject = JSON.parse(line.replaceAll('data: {"text": ', '{"text": '));
                         wrapper.querySelector('.ai-message-textarea').innerHTML += jsonObject.text; // 将文本添加到页面
                         chatContainer.scrollTop = chatContainer.scrollHeight;
