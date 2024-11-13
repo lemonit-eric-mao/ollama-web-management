@@ -1,5 +1,6 @@
 # OLLAMA 服务端地址
-OLLAMA_URL = "http://221.180.141.96:11434"
+# OLLAMA_URL = "http://221.180.141.96:11434"
+OLLAMA_URL = "http://42.202.134.15:11434"
 
 
 def get_ollama_url():

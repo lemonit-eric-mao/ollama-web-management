@@ -80,6 +80,7 @@ async def chat(question: str = Body(..., description="用户输入", examples=["
         else:
             yield json.dumps({"text": response}, ensure_ascii=False)
 
+    # 因为 ping=15 的问题，前端js需要过滤 result.startsWith('data:')的字符串才可以使用
     return EventSourceResponse(chat_iterator())
 
 
